@@ -89,7 +89,7 @@ func (addToCalendar *AddToCalendar) AddToCalendar() (string, error) {
 
 func readLocationData(timezone string) ([]byte, error) {
 
-	zipFile := "./zoneinfo.zip"
+	zipFile := "zoneinfo.zip"
 
 	databytes, err2 := local_time.LoadTzinfoFromZip(zipFile, timezone)
 	if err2 != nil {
