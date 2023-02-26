@@ -19,7 +19,7 @@ You can give Add To Calendar button in your email html template and in href prop
       import "github.com/inayatmemon/addtocalendar"
 
       calendarData := addtocalendar.AddToCalendar{
-	          	Title:                   "My event",
+	        Title:                   "My event",
               Details:                 "My Event Details",
               Location:                "Kandivali, Mumbai, 400002, India",
               Timezone:                "Asia/Kolkata",
