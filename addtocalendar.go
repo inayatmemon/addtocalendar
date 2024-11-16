@@ -15,6 +15,7 @@ type AddToCalendar struct {
 	EventEndUnixTimestamp   int64
 }
 
+// function to generate the calendar url
 func (addToCalendar *AddToCalendar) AddToCalendar() (string, error) {
 	var emptyStruct AddToCalendar
 	if *addToCalendar == emptyStruct {
