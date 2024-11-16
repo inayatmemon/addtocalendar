@@ -4,8 +4,6 @@ import (
 	"errors"
 	"net/url"
 	"time"
-
-	"github.com/inayatmemon/addtocalendar/local_time"
 )
 
 type AddToCalendar struct {
@@ -20,7 +18,7 @@ type AddToCalendar struct {
 func (addToCalendar *AddToCalendar) AddToCalendar() (string, error) {
 	var emptyStruct AddToCalendar
 	if *addToCalendar == emptyStruct {
-		return "", errors.New("Please provide atleast one value to struct")
+		return "", errors.New("please provide atleast one value to struct")
 	}
 
 	startTime := ""
@@ -47,14 +45,8 @@ func (addToCalendar *AddToCalendar) AddToCalendar() (string, error) {
 
 	if addToCalendar.Timezone != "" {
 
-		// data, err := readLocationData(addToCalendar.Timezone)
-		// if err != nil {
-		// 	return "", errors.New("Invalid timezone data")
-		// }
-
 		var err error
 		locTime, err = time.LoadLocation(addToCalendar.Timezone)
-		// locTime, err = time.LoadLocationFromTZData(addToCalendar.Timezone, data)
 		if err != nil {
 			locTime = time.Local
 		}
@@ -87,16 +79,4 @@ func (addToCalendar *AddToCalendar) AddToCalendar() (string, error) {
 	}
 
 	return calendarUrl, nil
-}
-
-func readLocationData(timezone string) ([]byte, error) {
-
-	zipFile := "zoneinfo.zip"
-
-	databytes, err2 := local_time.LoadTzinfoFromZip(zipFile, timezone)
-	if err2 != nil {
-		return nil, err2
-	}
-
-	return databytes, nil
 }
