@@ -47,12 +47,14 @@ func (addToCalendar *AddToCalendar) AddToCalendar() (string, error) {
 
 	if addToCalendar.Timezone != "" {
 
-		data, err := readLocationData(addToCalendar.Timezone)
-		if err != nil {
-			return "", errors.New("Invalid timezone data")
-		}
+		// data, err := readLocationData(addToCalendar.Timezone)
+		// if err != nil {
+		// 	return "", errors.New("Invalid timezone data")
+		// }
 
-		locTime, err = time.LoadLocationFromTZData(addToCalendar.Timezone, data)
+		var err error
+		locTime, err = time.LoadLocation(addToCalendar.Timezone)
+		// locTime, err = time.LoadLocationFromTZData(addToCalendar.Timezone, data)
 		if err != nil {
 			locTime = time.Local
 		}
